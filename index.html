@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Seo Tags -->
+        <title>Saiedoz | Developer</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="author" content="Saiedoz">
+        <meta name="about-meription" content="Saiedoz's personal website, Full-Stack Web Developer." />
+        <!-- Css Section -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <!-- Fonts -->
+        <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+        <link href="http://fonts.cdnfonts.com/css/avengeance" rel="stylesheet">
+        <style>
+        body{
+            background : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.imgur.com/LLHrNqP.jpg') repeat;
+            font-size:18px;
+            font-family: 'Quicksand', sans-serif;
+            width: 100%;
+            height: 100%;
+        }
+        #profile-picture{
+            width : 150px;
+            height: 150px;
+        }
+        .name{
+            font-size:36px;
+            font-weight : bold;
+            font-family: 'Avengeance', sans-serif;
+        }
+
+        .idcard{
+            background : #fff;
+            width : 550px;
+            margin:auto;
+            border-radius : 6px;
+            margin-top : 20px;
+            padding : 10px;
+        }
+        .social-links a{
+            font-size:26px;
+            color:#000;
+        }
+        .about-me{
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+
+           <div class="idcard text-center">
+
+                <img src="https://i.imgur.com/HLZqUtT.jpg" alt="Profile Picture" class="rounded-circle" id="profile-picture" />
+
+                <h2 class="name mb-4 mt-4">Ahmed Saied</h2>
+
+            <p class="about-me mt-4 mb-4">
+Hello dear, my name is Ahmed Saied <br>
+I am a web developer with more than <b>6 years of experience.</b><br>
+I have experience in many programming languages
+I will be excited to work with you.
+            </p>
+
+                    <section class="social-links">
+                        <a target="_blank" href="https://facebook.com/notsaied" class="mr-2"><i class="fab fa-facebook"></i></a>
+                        <a target="_blank" href="https://twitter.com/nootsaied" class="mr-2"><i class="fab fa-twitter"></i></a>
+                        <a target="_blank" href="https://github.com/notsaied" class="mr-2"><i class="fab fa-github"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/notsaied" class="mr-2"><i class="fab fa-linkedin"></i></a>
+                    </section> <!-- End Social Links -->
+
+                    <div class="mt-4 mb-4">
+                          <span>Mail Me : </span><a href="mailto:notsaied@pm.me">notsaied@pm.me</a>
+                    </div> <!-- End Mail Section -->
+
+                    <div class="mt-4 mb-4 typewrite" data-period="2500" data-type='["echo hello","print hi","document.write = welcome"]'></div>
+
+                    <div class="copyright">
+                        All Copyright Saved &copy; 2022
+                    </div>
+           </div>  <!-- End ID CARD DIV -->
+
+        </div>  <!-- End Container Div -->
+
+<!-- JS Section -->
+    <script>
+        var TxtType = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+
+        };
+        // special thanks to Simon Shahriveri.
+    </script>
+    </body>
+</html>
